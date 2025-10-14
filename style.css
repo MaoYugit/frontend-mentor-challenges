@@ -1,0 +1,160 @@
+/* --- 全局样式与重置 --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* 苹果风格字体栈：优先使用系统UI字体，在苹果设备上显示为San Francisco */
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  background-color: #f5f5f7; /* 苹果常用的浅灰色背景 */
+  color: #1d1d1f; /* 苹果常用的深灰色文字 */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+
+  /* 时尚背景：一个微妙的放射状渐变，增加高级感 */
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(200, 215, 255, 0.3),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(255, 200, 220, 0.3),
+      transparent 40%
+    );
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- 作品集主容器 --- */
+.portfolio {
+  width: 100%;
+  max-width: 720px;
+  text-align: center;
+}
+
+.portfolio-header {
+  margin-bottom: 48px;
+}
+
+.main-title {
+  font-size: 3rem; /* 48px */
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+  /* 文字渐变效果 */
+  background: linear-gradient(45deg, #333, #0071e3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.125rem; /* 18px */
+  color: #6e6e73;
+}
+
+/* --- 挑战列表与卡片样式 --- */
+.challenge-list {
+  width: 100%;
+}
+
+.challenge-card {
+  margin-bottom: 20px;
+  /* ✨ 加载动画效果 */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.challenge-card a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  border-radius: 20px;
+
+  /* ✨ 核心：毛玻璃/苹果风格效果 */
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* 兼容 Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /* ✨ 悬停动画过渡 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-title {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 500;
+}
+
+.arrow-icon {
+  width: 28px;
+  height: 28px;
+  color: #0071e3; /* 苹果蓝 */
+  transition: transform 0.3s ease;
+}
+
+/* --- 动画效果定义 --- */
+
+/* 1. 悬停动画 */
+.challenge-card a:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.challenge-card a:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* 2. 加载动画 */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 3. 为每个卡片设置不同的延迟，形成依次出现的效果 */
+.challenge-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.challenge-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.challenge-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+/* 如果你有更多项目，可以继续添加 nth-child */
+
+/* --- 响应式设计：在小屏幕上调整字体大小 --- */
+@media (max-width: 640px) {
+  .main-title {
+    font-size: 2.5rem; /* 40px */
+  }
+  .subtitle {
+    font-size: 1rem; /* 16px */
+  }
+  .card-title {
+    font-size: 1.125rem; /* 18px */
+  }
+}
